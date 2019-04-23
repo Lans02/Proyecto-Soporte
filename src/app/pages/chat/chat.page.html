@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="usuario.tipoU === 'Usuario' then user else tec " ></div>
+  <ng-template #user>
+      <ion-list >
+          <ion-item [hidden]="usuario.email != chat.email" *ngFor ="let chat of chatRooms;let indice=index" (click)="openChat(chat)">
+              <div *ngIf=" usuario.email === chat.email then name"></div>
+              <ng-template #name>
+                  <ion-avatar slot="start">
+                      <ion-img  src="https://firebasestorage.googleapis.com/v0/b/soporte-tecnico-51977.appspot.com/o/hombre-creido.jpg?alt=media&token=09d39822-1b3b-4bb9-928b-2b9c9a98fe3f"></ion-img>
+                    </ion-avatar>
+                    <ion-label>
+                      <h2><b>Carlos Martinez</b> </h2>
+                      <p>soporte@helpdesk.com</p>
+                      <p>Tecnico</p>
+                    </ion-label>
+              </ng-template>
+          </ion-item>
+      </ion-list>
+  </ng-template>
+
+<ng-template #tec>
+    <ion-list>
+        <ion-item *ngFor ="let chat of chatRooms" (click)="openChat(chat)">
+            <ion-avatar slot="start">
+                <ion-img [src]="chat.img"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h2> <b>{{chat.Nombre}}</b> </h2>
+                <p>{{chat.email}}</p>
+              </ion-label>
+        </ion-item>
+    </ion-list>
+</ng-template>
+
+
+
+
+
+
+
+
+      
+</ion-content>

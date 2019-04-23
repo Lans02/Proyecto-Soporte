@@ -1,0 +1,31 @@
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="end" style="color:#fff;" fill="clear" (click)="presentActionSheet()" >
+        <ion-icon name="menu"></ion-icon>
+      </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-tabs>
+  <ion-tab-bar slot="bottom" color="primary">
+  
+    <ion-tab-button tab="chat">
+      <ion-icon name="chatboxes"></ion-icon>
+      <ion-label>Chats</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="reportes">
+        <ion-icon name="book"></ion-icon>
+        <ion-label>Reportes</ion-label>
+      </ion-tab-button>
+
+    <ion-tab-button tab="evaluar" [hidden]="usuario.tipoU != 'Usuario' ">
+        <ion-icon name="clipboard"></ion-icon>
+      <ion-label>Evaluar S.</ion-label>
+    </ion-tab-button>
+
+   
+  </ion-tab-bar>
+</ion-tabs>

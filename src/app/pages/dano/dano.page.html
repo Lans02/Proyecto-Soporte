@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title >Tipo de Daño</ion-title>
+    <ion-button slot="end" style="color:#fff;" fill="clear" (click)="presentActionSheet()" >
+        <ion-icon name="menu"></ion-icon>
+      </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="fondo" padding>
+      <ion-grid>
+          <ion-row justify-content-center>
+            <ion-col align-self-center size-md="7" size-lg="5" size-xs="12">
+              <form [formGroup]="solicitudform">
+
+                  <ion-item>
+                    <ion-label>Daño</ion-label>
+                      <ion-select placeholder="Seleccione el daño" [(ngModel)]="tipo" name="tipo" formControlName="tipo">
+                        <ion-select-option value="Software">Software</ion-select-option>
+                        <ion-select-option value="Hardware">Hardware</ion-select-option>
+                        <ion-select-option value="Redes">Redes</ion-select-option>
+                        <ion-select-option value="Otros">Otros</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+
+                    <div class="error-mensaje">
+                        <ng-container *ngFor="let error of error_messages.tipo">
+                            <div class="error-mensaje" *ngIf="solicitudform.get('tipo').hasError(error.type) && (solicitudform.get('tipo').dirty || solicitudform.get('tipo').touched)"> 
+                              {{error.message}}
+                            </div>
+                        </ng-container>
+                    </div>
+    
+
+                  <ion-item>
+                      <ion-input type="text" [(ngModel)]="tiempo" name="tiempo" formControlName="tiempo" placeholder="Tiempo de Daño"></ion-input>
+                  </ion-item>
+
+                  <div class="error-mensaje">
+                      <ng-container *ngFor="let error of error_messages.tiempo">
+                          <div class="error-mensaje" *ngIf="solicitudform.get('tiempo').hasError(error.type) && (solicitudform.get('tiempo').dirty || solicitudform.get('tiempo').touched)"> 
+                            {{error.message}}
+                          </div>
+                      </ng-container>
+                  </div>
+
+                <ion-item>
+                    <ion-textarea [(ngModel)]="descri" name="descri" formControlName="descri" rows="10" cols="30" placeholder="Describa un poco mas aqui..."></ion-textarea>
+                </ion-item>
+
+                <div class="error-mensaje">
+                    <ng-container *ngFor="let error of error_messages.descri">
+                        <div class="error-mensaje" *ngIf="solicitudform.get('descri').hasError(error.type) && (solicitudform.get('descri').dirty || solicitudform.get('descri').touched)"> 
+                          {{error.message}}
+                        </div>
+                    </ng-container>
+                </div>
+
+                <div padding>
+                    <ion-button (click)="onRegistrarProblema()" [disabled]='!solicitudform.valid' shape="round" size="default" expand="block">Guardar</ion-button>
+                  </div>
+                </form>     
+           </ion-col>
+          </ion-row>
+        </ion-grid>   
+  </div>
+</ion-content>

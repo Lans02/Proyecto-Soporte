@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Reportes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div *ngIf="usuario.tipoU === 'Tecnico' then tec  else user" ></div>
+<ng-template #user>
+        <ion-item  [hidden]="usuario.email != r.email"  *ngFor ="let r of reports; let indice=index">
+            <div *ngIf="usuario.email === r.email then name"> </div>
+            <ng-template #name>
+                <ion-label>
+                  <h2><b>Codigo T: {{r.codigo}}</b> </h2>
+                   <p>Estado: {{r.estado}}</p>
+                   <p>Tipo de daño: {{r.tipo}}</p> 
+                   <p>tiempo: {{r.tiempo}}</p>
+                   <p>Descripcion: {{r.descripcion}}</p>
+                  </ion-label>
+            </ng-template>    
+        </ion-item>
+</ng-template>
+
+
+  <ng-template #tec>
+      <ion-list>
+          <ion-item *ngFor ="let r of reports">
+                <ion-label>
+                  <h2><b>{{r.Nombre}}</b> </h2>
+                  <p>{{r.email}}</p>
+                 <p>Codigo ticket : {{r.codigo}}</p> 
+                 <p>Estado : {{r.estado}}</p>
+                 <p>Fecha : {{r.fecha}}</p>
+                </ion-label>
+          </ion-item>
+      </ion-list>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="opentik()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ng-template>
+  
+
+</ion-content>

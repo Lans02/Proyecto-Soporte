@@ -1,0 +1,33 @@
+ion-content{
+    --background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), 
+    linear-gradient(to bottom, rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), 
+    linear-gradient(135deg, #670d10 0%,#092756 100%);
+    --background-attachment: scroll;
+    --color: #fff;
+    --background-attachment: fixed;
+   } 
+
+
+ion-button {
+    font-weight: 300;
+   }   
+   
+   ion-item {
+    border-radius: 5px !important;
+    padding-left:0px !important;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    border: 2px solid #ffffff;
+    border-bottom: 0px !important;
+    box-shadow: none !important;
+}
+
+.error-mensaje{
+    font-size: 0.9em;
+    color: red;
+    text-align: justify ;
+    justify-content: flex-start;
+    padding: 2px;
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
